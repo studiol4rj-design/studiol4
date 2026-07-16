@@ -661,14 +661,51 @@ h3 { margin: 0; font-size: 1.13rem; }
 }
 
 .site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) auto minmax(260px, 1fr);
+  align-items: center;
+  gap: 18px;
   padding: 28px clamp(18px, 5vw, 72px);
   color: var(--muted);
   border-top: 1px solid var(--line);
   background: #050507;
+}
+.footer-brand {
+  color: var(--text);
+  font-weight: 950;
+  text-transform: uppercase;
+}
+.footer-copy {
+  justify-self: center;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  color: var(--muted);
+  font-weight: 800;
+}
+.footer-contact a:hover {
+  color: var(--cyan);
+}
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .reveal {
@@ -761,5 +798,13 @@ h3 { margin: 0; font-size: 1.13rem; }
   .contact { background-position: 60% center; }
   .portfolio { min-height: 76vh; padding: 112px 18px 64px; background-position: 58% center; }
   .portfolio::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,7,0.72) 48%, rgba(5,5,7,0.34) 100%); }
+  .site-footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .footer-contact {
+    justify-content: center;
+  }
   .button { width: 100%; }
 }
