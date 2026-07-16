@@ -413,16 +413,42 @@ h3 { margin: 0; font-size: 1.13rem; }
 }
 
 .portfolio {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.95fr);
-  align-items: center;
-  gap: clamp(28px, 5vw, 72px);
-  padding: 106px clamp(18px, 5vw, 72px);
-  background: linear-gradient(180deg, #050507, #0d0d12);
+  min-height: 82vh;
+  align-items: end;
+  overflow: hidden;
+  padding: 132px clamp(18px, 5vw, 72px) 104px;
+  isolation: isolate;
+  background-image: url("identity-digital-marketing.png");
+  background-size: cover;
+  background-position: center;
+}
+.portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: inherit;
+  filter: saturate(1.08) contrast(1.08);
+  transform: scale(1.02);
+}
+.portfolio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5,5,7,0.94) 0%, rgba(5,5,7,0.7) 42%, rgba(5,5,7,0.18) 100%),
+    linear-gradient(0deg, rgba(5,5,7,0.98) 0%, rgba(5,5,7,0.16) 34%, rgba(5,5,7,0.34) 100%);
+}
+.portfolio-copy {
+  width: min(760px, 100%);
 }
 .portfolio-copy p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 1.1rem;
+  max-width: 650px;
+  color: #d9daf0;
+  font-size: 1.14rem;
 }
 .text-link {
   display: inline-flex;
@@ -431,24 +457,6 @@ h3 { margin: 0; font-size: 1.13rem; }
   font-weight: 950;
 }
 .text-link::after { content: "→"; margin-left: 8px; }
-.portfolio-image { position: relative; }
-.portfolio-image::before {
-  content: "";
-  position: absolute;
-  inset: 7% -2% -2% 14%;
-  z-index: -1;
-  border-radius: 8px;
-  background: linear-gradient(135deg, rgba(160,32,255,0.36), rgba(32,211,255,0.2));
-  filter: blur(24px);
-}
-.portfolio-image img {
-  width: min(620px, 100%);
-  margin-left: auto;
-  border-radius: 8px;
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow);
-}
-
 .result-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -556,8 +564,7 @@ h3 { margin: 0; font-size: 1.13rem; }
 
 @media (max-width: 1080px) {
   .timeline, .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .section-heading, .portfolio, .contact, .impact { grid-template-columns: 1fr; }
-  .portfolio-image img { margin-left: 0; }
+  .section-heading, .contact, .impact { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -604,6 +611,8 @@ h3 { margin: 0; font-size: 1.13rem; }
   .hero-stats, .service-grid, .timeline, .result-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 238px; }
   .impact-board div { grid-template-columns: 1fr; }
-  .section, .portfolio, .contact, .impact { padding: 74px 18px; }
+  .section, .contact, .impact { padding: 74px 18px; }
+  .portfolio { min-height: 76vh; padding: 112px 18px 64px; background-position: 58% center; }
+  .portfolio::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,7,0.72) 48%, rgba(5,5,7,0.34) 100%); }
   .button { width: 100%; }
 }
