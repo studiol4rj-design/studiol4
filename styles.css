@@ -572,14 +572,33 @@ h3 { margin: 0; font-size: 1.13rem; }
 .result-grid span { display: block; }
 
 .contact {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.68fr);
   gap: clamp(28px, 6vw, 86px);
+  overflow: hidden;
+  isolation: isolate;
   padding: 106px clamp(18px, 5vw, 72px);
-  background:
-    linear-gradient(135deg, rgba(160, 32, 255, 0.16), transparent 38%),
-    #07070b;
+  background-image: url("contact-background.png");
+  background-size: cover;
+  background-position: center;
   border-top: 1px solid var(--line);
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: inherit;
+  filter: saturate(1.08) contrast(1.08);
+  transform: scale(1.02);
+}
+.contact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--section-overlay);
 }
 .contact-links {
   display: flex;
@@ -716,6 +735,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   .impact { background-position: 58% center; }
   .method { background-position: 58% center; }
   .results { background-position: 58% center; }
+  .contact { background-position: 60% center; }
   .portfolio { min-height: 76vh; padding: 112px 18px 64px; background-position: 58% center; }
   .portfolio::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,7,0.72) 48%, rgba(5,5,7,0.34) 100%); }
   .button { width: 100%; }
