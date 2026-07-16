@@ -1,4 +1,4 @@
-﻿const header = document.querySelector('[data-header]');
+const header = document.querySelector('[data-header]');
 const nav = document.querySelector('[data-nav]');
 const toggle = document.querySelector('[data-nav-toggle]');
 const revealItems = document.querySelectorAll('.reveal');
@@ -35,4 +35,26 @@ if ('IntersectionObserver' in window) {
   revealItems.forEach((item) => revealObserver.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
+}
+const whatsappForm = document.querySelector('[data-whatsapp-form]');
+
+if (whatsappForm) {
+  whatsappForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(whatsappForm);
+    const nome = String(formData.get('nome') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const projeto = String(formData.get('projeto') || '').trim();
+    const message = [
+      'Olá, Studio L4! Quero iniciar um projeto.',
+      '',
+      `Nome: ${nome}`,
+      `E-mail: ${email}`,
+      `Projeto: ${projeto}`,
+    ].join('\n');
+
+    const url = `https://wa.me/5521984287457?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener');
+  });
 }
