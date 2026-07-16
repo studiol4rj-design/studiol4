@@ -71,26 +71,30 @@ button, input, textarea { font: inherit; }
   transition: border-color 180ms ease, background 180ms ease, padding 180ms ease;
 }
 .site-header.is-scrolled {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background: rgba(5, 5, 7, 0.9);
   border-color: var(--line);
+}
+.site-header.is-scrolled .brand img {
+  width: 64px;
+  height: 64px;
 }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 .brand img {
-  width: 44px;
-  height: 44px;
-  object-fit: cover;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
   border-radius: 50%;
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 0 32px rgba(160, 32, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 34px rgba(160, 32, 255, 0.38), 0 0 18px rgba(32, 211, 255, 0.18);
 }
 .site-nav {
   display: flex;
@@ -688,7 +692,8 @@ h3 { margin: 0; font-size: 1.13rem; }
 
 @media (max-width: 720px) {
   .site-header { padding: 14px 18px; }
-  .brand span { font-size: 0.92rem; }
+  .brand img { width: 62px; height: 62px; }
+  .site-header.is-scrolled .brand img { width: 56px; height: 56px; }
   .nav-toggle {
     display: inline-grid;
     width: 44px;
