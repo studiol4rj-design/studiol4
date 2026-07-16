@@ -287,6 +287,32 @@ h3 { margin: 0; font-size: 1.13rem; }
 .section {
   padding: 104px clamp(18px, 5vw, 72px);
 }
+.services {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-image: url("solutions-digital-services.png");
+  background-size: cover;
+  background-position: center;
+}
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: inherit;
+  filter: saturate(1.1) contrast(1.08);
+  transform: scale(1.02);
+}
+.services::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5,5,7,0.94) 0%, rgba(5,5,7,0.72) 42%, rgba(5,5,7,0.42) 100%),
+    linear-gradient(0deg, rgba(5,5,7,0.96) 0%, rgba(5,5,7,0.26) 48%, rgba(5,5,7,0.88) 100%);
+}
 .section-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
@@ -303,6 +329,9 @@ h3 { margin: 0; font-size: 1.13rem; }
   color: var(--muted);
   font-size: 1.08rem;
 }
+.services .section-heading p:not(.eyebrow) {
+  color: #d9daf0;
+}
 .service-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -313,7 +342,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(18,18,29,0.9), rgba(10,10,17,0.86));
+  background: linear-gradient(180deg, rgba(18,18,29,0.84), rgba(10,10,17,0.78));
   box-shadow: var(--shadow);
 }
 .service-card::before, .timeline article::before, .result-grid article::before {
@@ -612,6 +641,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   .service-card { min-height: 238px; }
   .impact-board div { grid-template-columns: 1fr; }
   .section, .contact, .impact { padding: 74px 18px; }
+  .services { background-position: 62% center; }
   .portfolio { min-height: 76vh; padding: 112px 18px 64px; background-position: 58% center; }
   .portfolio::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,7,0.72) 48%, rgba(5,5,7,0.34) 100%); }
   .button { width: 100%; }
