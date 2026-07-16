@@ -166,7 +166,7 @@ button, input, textarea { font: inherit; }
   background: linear-gradient(90deg, transparent, rgba(32, 211, 255, 0.52), rgba(160, 32, 255, 0.5), transparent);
 }
 .hero-content {
-  width: min(860px, 100%);
+  width: min(780px, 100%);
 }
 .eyebrow {
   margin: 0 0 14px;
@@ -179,9 +179,9 @@ button, input, textarea { font: inherit; }
 h1, h2, h3, p { overflow-wrap: anywhere; }
 h1 {
   margin: 0;
-  max-width: 960px;
-  font-size: clamp(3.45rem, 8vw, 7.7rem);
-  line-height: 0.92;
+  max-width: 12ch;
+  font-size: clamp(3rem, 6.2vw, 5.8rem);
+  line-height: 0.96;
   letter-spacing: 0;
   text-transform: uppercase;
   text-wrap: balance;
@@ -690,6 +690,13 @@ h3 { margin: 0; font-size: 1.13rem; }
   .section-heading, .contact, .impact { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 980px) {
+  h1 {
+    max-width: 12ch;
+    font-size: clamp(2.8rem, 7.4vw, 4.8rem);
+  }
+}
+
 @media (max-width: 720px) {
   .site-header { padding: 14px 18px; }
   .brand img { width: 62px; height: 62px; }
@@ -730,7 +737,12 @@ h3 { margin: 0; font-size: 1.13rem; }
     background: linear-gradient(0deg, var(--bg) 0%, rgba(5,5,7,0.7) 48%, rgba(5,5,7,0.28) 100%);
   }
   .hero-media img { object-position: 63% center; opacity: 0.46; }
-  h1 { font-size: clamp(2.9rem, 14vw, 4.5rem); }
+  .hero-content { width: min(100%, 620px); }
+  h1 {
+    max-width: 11ch;
+    font-size: clamp(2.3rem, 10.5vw, 4.1rem);
+    line-height: 1;
+  }
   h2 { font-size: clamp(2rem, 11vw, 3.3rem); }
   .hero-stats, .service-grid, .timeline, .result-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 238px; }
