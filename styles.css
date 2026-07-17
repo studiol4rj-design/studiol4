@@ -302,7 +302,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-image: url("solutions-digital-services.png");
+  background-image: url("solutions-digital-services.webp");
   background-size: cover;
   background-position: center;
 }
@@ -408,7 +408,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   overflow: hidden;
   isolation: isolate;
   padding: 110px clamp(18px, 5vw, 72px);
-  background-image: url("impact-visual-background.png");
+  background-image: url("impact-visual-background.webp");
   background-size: cover;
   background-position: center;
   border-block: 1px solid var(--line);
@@ -460,7 +460,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-image: url("method-process-background.png");
+  background-image: url("method-process-background.webp");
   background-size: cover;
   background-position: center;
 }
@@ -502,7 +502,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   overflow: hidden;
   padding: 132px clamp(18px, 5vw, 72px) 104px;
   isolation: isolate;
-  background-image: url("identity-digital-marketing.png");
+  background-image: url("identity-digital-marketing.webp");
   background-size: cover;
   background-position: center;
 }
@@ -543,7 +543,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-image: url("performance-background.png");
+  background-image: url("performance-background.webp");
   background-size: cover;
   background-position: center;
 }
@@ -589,7 +589,7 @@ h3 { margin: 0; font-size: 1.13rem; }
   overflow: hidden;
   isolation: isolate;
   padding: 106px clamp(18px, 5vw, 72px);
-  background-image: url("contact-background.png");
+  background-image: url("contact-background.webp");
   background-size: cover;
   background-position: center;
   border-top: 1px solid var(--line);
