@@ -4,3 +4,9 @@ Thumbs.db
 node_modules/
 dist/
 arquivos-originais-locais/
+backup-primeiro-site/
+.env
+.env.*
+*.env
+!.env.example
+!.env.*.example
