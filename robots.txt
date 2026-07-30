@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /briefing-imersao/
 Allow: /
 
 Sitemap: https://www.studiol4.com.br/sitemap.xml

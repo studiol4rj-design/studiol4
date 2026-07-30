@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Página interna: não indexar nem seguir links -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+
+  <meta
+    name="description"
+    content="Briefing interno de imersão da Studio L4 para definição de estrutura, identidade visual, conteúdo e funcionalidades de sites e sistemas."
+  >
+
+  <title>Briefing de Imersão | Studio L4</title>
+
+  <style>
+    :root {
+      --cor-fundo: #f3f4f6;
+      --cor-card: #ffffff;
+      --cor-principal: #111827;
+      --cor-secundaria: #6b7280;
+      --cor-destaque: #6d28d9;
+      --cor-destaque-hover: #5b21b6;
+      --cor-borda: #d1d5db;
+      --cor-sucesso: #047857;
+      --cor-erro: #b91c1c;
+      --cor-aviso: #92400e;
+      --cor-fundo-aviso: #fffbeb;
+      --sombra: 0 15px 40px rgba(17, 24, 39, 0.10);
+      --raio: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 32px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--cor-principal);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(109, 40, 217, 0.12),
+          transparent 35%
+        ),
+        var(--cor-fundo);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .cabecalho {
+      margin-bottom: 24px;
+      padding: 34px;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(135deg, #111827, #312e81);
+      border-radius: var(--raio);
+      box-shadow: var(--sombra);
+    }
+
+    .marca {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.18rem;
+      text-transform: uppercase;
+      color: #c4b5fd;
+    }
+
+    .cabecalho h1 {
+      margin-bottom: 14px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .cabecalho p {
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.65;
+      color: #e5e7eb;
+    }
+
+    .aviso-inicial {
+      margin-bottom: 24px;
+      padding: 20px 22px;
+      line-height: 1.6;
+      color: var(--cor-aviso);
+      background: var(--cor-fundo-aviso);
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+    }
+
+    .aviso-inicial strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #78350f;
+    }
+
+    .formulario {
+      overflow: hidden;
+      background: var(--cor-card);
+      border-radius: var(--raio);
+      box-shadow: var(--sombra);
+    }
+
+    .secao {
+      padding: 32px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .secao:last-of-type {
+      border-bottom: none;
+    }
+
+    .titulo-secao {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .descricao-secao {
+      margin-bottom: 24px;
+      color: var(--cor-secundaria);
+      line-height: 1.55;
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .campo-largo {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    legend {
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .obrigatorio {
+      color: var(--cor-erro);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--cor-principal);
+      background: #ffffff;
+      border: 1px solid var(--cor-borda);
+      border-radius: 10px;
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--cor-destaque);
+      box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.12);
+    }
+
+    textarea {
+      min-height: 125px;
+      resize: vertical;
+    }
+
+    fieldset {
+      min-width: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .grupo-opcoes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .grupo-opcoes.tres-colunas {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .opcao {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .opcao:hover {
+      background: #f5f3ff;
+      border-color: #c4b5fd;
+    }
+
+    .opcao input {
+      width: auto;
+      margin-top: 2px;
+      accent-color: var(--cor-destaque);
+    }
+
+    .bloco-projeto[hidden] {
+      display: none;
+    }
+
+    .acoes {
+      padding: 28px 32px;
+      text-align: center;
+      background: #f9fafb;
+    }
+
+    .confirmacao {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+      max-width: 760px;
+      margin: 0 auto 20px;
+      text-align: left;
+      color: var(--cor-secundaria);
+    }
+
+    .confirmacao input {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--cor-destaque);
+    }
+
+    button {
+      min-width: 250px;
+      padding: 15px 24px;
+      font: inherit;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      background: var(--cor-destaque);
+      border: none;
+      border-radius: 10px;
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--cor-destaque-hover);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.65;
+      transform: none;
+    }
+
+    .mensagem {
+      display: none;
+      margin-top: 18px;
+      padding: 14px;
+      line-height: 1.5;
+      border-radius: 10px;
+    }
+
+    .mensagem.sucesso {
+      display: block;
+      color: var(--cor-sucesso);
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+    }
+
+    .mensagem.erro {
+      display: block;
+      color: var(--cor-erro);
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+
+    .honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .rodape {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--cor-secundaria);
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      .cabecalho,
+      .secao,
+      .acoes {
+        padding: 24px 18px;
+      }
+
+      .grade,
+      .grupo-opcoes,
+      .grupo-opcoes.tres-colunas {
+        grid-template-columns: 1fr;
+      }
+
+      button {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <header class="cabecalho">
+      <div class="marca">Studio L4</div>
+      <h1>Briefing de Imersão do Projeto</h1>
+      <p>
+        Agora que o projeto foi iniciado, precisamos conhecer melhor o negócio,
+        sua identidade, seu público e suas preferências. Essas informações
+        orientarão a estrutura, o conteúdo, as funcionalidades e o layout da
+        solução contratada.
+      </p>
+    </header>
+
+    <div class="aviso-inicial">
+      <strong>Orientação para preenchimento</strong>
+      Não é necessário repetir informações comerciais, formas de pagamento ou
+      dados já fornecidos. Concentre-se nas características do negócio e no que
+      deve ser transmitido visualmente e funcionalmente pelo projeto.
+    </div>
+
+    <form id="formBriefing" class="formulario" method="post" novalidate>
+      <!-- Campo invisível contra robôs -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Não preencha este campo</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
+        >
+      </div>
+
+      <input type="hidden" id="formulario-iniciado-em" name="formulario_iniciado_em">
+
+      <section class="secao">
+        <h2 class="titulo-secao">1. Identificação do projeto</h2>
+        <p class="descricao-secao">
+          Informe apenas os dados necessários para identificarmos corretamente este briefing.
+        </p>
+
+        <div class="grade">
+          <div class="campo">
+            <label for="nome-negocio">
+              Nome da empresa, marca ou atividade
+              <span class="obrigatorio">*</span>
+            </label>
+            <input
+              type="text"
+              id="nome-negocio"
+              name="nome_negocio"
+              autocomplete="organization"
+              maxlength="160"
+              required
+            >
+          </div>
+
+          <div class="campo">
+            <label for="nome-projeto">Nome interno ou título do projeto</label>
+            <input
+              type="text"
+              id="nome-projeto"
+              name="nome_projeto"
+              maxlength="160"
+              placeholder="Ex.: Novo site institucional"
+            >
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>
+                Qual solução está sendo desenvolvida?
+                <span class="obrigatorio">*</span>
+              </legend>
+
+              <div class="grupo-opcoes tres-colunas">
+                <label class="opcao">
+                  <input type="checkbox" name="tipo_projeto[]" value="site" class="tipo-projeto">
+                  Site
+                </label>
+                <label class="opcao">
+                  <input type="checkbox" name="tipo_projeto[]" value="sistema" class="tipo-projeto">
+                  Sistema
+                </label>
+                <label class="opcao">
+                  <input type="checkbox" name="tipo_projeto[]" value="site-sistema" class="tipo-projeto">
+                  Site integrado a sistema
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">2. Conhecendo o negócio</h2>
+        <p class="descricao-secao">
+          As respostas desta seção ajudarão a Studio L4 a compreender o posicionamento e a realidade da empresa.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="descricao-negocio">
+              Explique de forma clara o que o negócio faz
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="descricao-negocio" name="descricao_negocio" required></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="segmento">
+              Segmento de atuação
+              <span class="obrigatorio">*</span>
+            </label>
+            <input type="text" id="segmento" name="segmento" maxlength="160" required>
+          </div>
+
+          <div class="campo">
+            <label for="area-atendimento">Área geográfica de atendimento</label>
+            <input type="text" id="area-atendimento" name="area_atendimento" maxlength="240">
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="historia-negocio">Conte resumidamente a história do negócio</label>
+            <textarea id="historia-negocio" name="historia_negocio"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="servicos-produtos">
+              Liste os principais serviços ou produtos
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="servicos-produtos" name="servicos_produtos" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="diferenciais">
+              Quais são os principais diferenciais do negócio?
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="diferenciais" name="diferenciais" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="valores">Quais valores e princípios representam a empresa?</label>
+            <textarea id="valores" name="valores"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">3. Público e posicionamento</h2>
+        <p class="descricao-secao">
+          Essas informações orientarão a linguagem, o estilo visual e a organização do conteúdo.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="publico-alvo">
+              Quem são os principais clientes?
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="publico-alvo" name="publico_alvo" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="necessidades-publico">
+              Quais problemas ou necessidades levam esse público a procurar a empresa?
+            </label>
+            <textarea id="necessidades-publico" name="necessidades_publico"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="percepcao-marca">
+              Como a empresa deseja ser percebida?
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="percepcao-marca" name="percepcao_marca" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Características que devem ser transmitidas pelo projeto</legend>
+              <div class="grupo-opcoes tres-colunas">
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="confianca">Confiança</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="modernidade">Modernidade</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="sofisticacao">Sofisticação</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="proximidade">Proximidade</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="autoridade">Autoridade</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="inovacao">Inovação</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="acessibilidade">Acessibilidade</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="agilidade">Agilidade</label>
+                <label class="opcao"><input type="checkbox" name="caracteristicas_marca[]" value="seguranca">Segurança</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">4. Objetivos da solução</h2>
+        <p class="descricao-secao">
+          Explique o papel que o site ou sistema deverá desempenhar no negócio.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="objetivo-principal">
+              Qual é o principal objetivo do projeto?
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="objetivo-principal" name="objetivo_principal" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Resultados esperados</legend>
+              <div class="grupo-opcoes">
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="apresentar-empresa">Apresentar profissionalmente a empresa</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="gerar-contatos">Gerar contatos e oportunidades</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="fortalecer-marca">Fortalecer a marca</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="organizar-informacoes">Organizar informações</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="automatizar-processos">Automatizar processos</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="melhorar-atendimento">Melhorar o atendimento</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="centralizar-operacoes">Centralizar operações</label>
+                <label class="opcao"><input type="checkbox" name="resultados_esperados[]" value="reduzir-trabalho-manual">Reduzir trabalho manual</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="acao-principal">Qual ação principal o usuário deverá realizar?</label>
+            <textarea id="acao-principal" name="acao_principal"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">5. Identidade visual e estilo do layout</h2>
+        <p class="descricao-secao">
+          Utilize esta seção para indicar as preferências visuais da empresa.
+        </p>
+
+        <div class="grade">
+          <div class="campo">
+            <label for="possui-logotipo">
+              A empresa possui logotipo?
+              <span class="obrigatorio">*</span>
+            </label>
+            <select id="possui-logotipo" name="possui_logotipo" required>
+              <option value="">Selecione</option>
+              <option value="sim-editavel">Sim, em formato editável ou vetorial</option>
+              <option value="sim-imagem">Sim, apenas como imagem</option>
+              <option value="em-desenvolvimento">Está sendo desenvolvido</option>
+              <option value="nao">Não possui</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="possui-manual">Possui manual de identidade visual?</label>
+            <select id="possui-manual" name="possui_manual">
+              <option value="">Selecione</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+              <option value="nao-sei">Não sei informar</option>
+            </select>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="cores-marca">Informe as cores utilizadas pela marca</label>
+            <input type="text" id="cores-marca" name="cores_marca" maxlength="300">
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="cores-evitar">Existem cores ou combinações que devem ser evitadas?</label>
+            <input type="text" id="cores-evitar" name="cores_evitar" maxlength="300">
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>
+                Qual estilo visual mais combina com o projeto?
+                <span class="obrigatorio">*</span>
+              </legend>
+              <div class="grupo-opcoes tres-colunas">
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="moderno">Moderno</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="minimalista">Minimalista</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="elegante">Elegante</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="corporativo">Corporativo</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="tecnologico">Tecnológico</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="criativo">Criativo</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="classico">Clássico</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="acolhedor">Acolhedor</label>
+                <label class="opcao"><input type="checkbox" name="estilo_visual[]" value="impactante">Impactante</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="descricao-estilo">Descreva como imagina visualmente o projeto</label>
+            <textarea id="descricao-estilo" name="descricao_estilo"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="elementos-evitar">Existe algum estilo, elemento ou aparência que deve ser evitado?</label>
+            <textarea id="elementos-evitar" name="elementos_evitar"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">6. Referências visuais</h2>
+        <p class="descricao-secao">
+          As referências não serão copiadas. Elas servirão para identificar preferências de organização, estilo e experiência de uso.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="referencias-gosta">
+              Informe sites, sistemas, aplicativos ou marcas de que gosta
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="referencias-gosta" name="referencias_gosta" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="referencias-nao-gosta">Informe exemplos de layouts ou estilos de que não gosta</label>
+            <textarea id="referencias-nao-gosta" name="referencias_nao_gosta"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="concorrentes">Informe os principais concorrentes ou empresas semelhantes</label>
+            <textarea id="concorrentes" name="concorrentes"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="diferenciacao-concorrentes">Em que o projeto deve se diferenciar dos concorrentes?</label>
+            <textarea id="diferenciacao-concorrentes" name="diferenciacao_concorrentes"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">7. Conteúdo disponível</h2>
+        <p class="descricao-secao">
+          Informe quais materiais já existem e quais ainda precisarão ser organizados ou produzidos.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Quais materiais já estão disponíveis?</legend>
+              <div class="grupo-opcoes">
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="logotipo">Logotipo</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="textos">Textos institucionais</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="fotos">Fotografias próprias</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="videos">Vídeos</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="catalogo">Catálogo ou portfólio</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="depoimentos">Depoimentos de clientes</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="documentos">Documentos institucionais</label>
+                <label class="opcao"><input type="checkbox" name="materiais_disponiveis[]" value="nenhum">Nenhum material organizado</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="origem-imagens">Que tipo de imagem deverá ser utilizado?</label>
+            <select id="origem-imagens" name="origem_imagens">
+              <option value="">Selecione</option>
+              <option value="fotos-proprias">Fotografias próprias da empresa</option>
+              <option value="banco-imagens">Imagens profissionais de banco de imagens</option>
+              <option value="ilustracoes">Ilustrações ou elementos gráficos</option>
+              <option value="combinacao">Combinação das opções</option>
+              <option value="a-definir">A definir com a Studio L4</option>
+            </select>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="informacoes-obrigatorias">
+              Quais informações precisam aparecer obrigatoriamente?
+              <span class="obrigatorio">*</span>
+            </label>
+            <textarea id="informacoes-obrigatorias" name="informacoes_obrigatorias" required></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="slogan">Existe slogan, chamada principal ou frase institucional?</label>
+            <input type="text" id="slogan" name="slogan" maxlength="300">
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="restricoes-conteudo">Existe alguma informação que não deve ser publicada?</label>
+            <textarea id="restricoes-conteudo" name="restricoes_conteudo"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section id="secao-site" class="secao bloco-projeto" hidden>
+        <h2 class="titulo-secao">8. Estrutura e conteúdo do site</h2>
+        <p class="descricao-secao">
+          Esta seção deverá ser preenchida quando o projeto incluir um site, portal ou área pública institucional.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Quais páginas ou seções o site deverá possuir?</legend>
+              <div class="grupo-opcoes">
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="inicio">Página inicial</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="sobre">Sobre a empresa</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="servicos">Serviços</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="produtos">Produtos</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="portfolio">Portfólio ou projetos</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="galeria">Galeria</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="depoimentos">Depoimentos</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="blog">Blog ou notícias</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="perguntas">Perguntas frequentes</label>
+                <label class="opcao"><input type="checkbox" name="paginas_site[]" value="contato">Contato</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="outras-paginas">Outras páginas ou áreas necessárias</label>
+            <textarea id="outras-paginas" name="outras_paginas"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="destaque-inicial">O que deve receber maior destaque na página inicial?</label>
+            <textarea id="destaque-inicial" name="destaque_inicial"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Recursos desejados no site</legend>
+              <div class="grupo-opcoes">
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="whatsapp">Botão de WhatsApp</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="formulario">Formulário de contato</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="mapa">Mapa e localização</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="redes-sociais">Integração com redes sociais</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="galeria">Galeria de imagens</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="videos">Exibição de vídeos</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="catalogo">Catálogo</label>
+                <label class="opcao"><input type="checkbox" name="recursos_site[]" value="orcamento">Solicitação de orçamento</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <section id="secao-sistema" class="secao bloco-projeto" hidden>
+        <h2 class="titulo-secao">9. Estrutura e operação do sistema</h2>
+        <p class="descricao-secao">
+          Esta seção deverá ser preenchida quando o projeto incluir um sistema, painel administrativo, portal interno ou área restrita.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="problema-sistema">Qual problema operacional o sistema deverá resolver?</label>
+            <textarea id="problema-sistema" name="problema_sistema"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="usuarios-sistema">Quem utilizará o sistema?</label>
+            <textarea id="usuarios-sistema" name="usuarios_sistema"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="processo-atual">Descreva o processo atual, do início ao fim</label>
+            <textarea id="processo-atual" name="processo_atual"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <fieldset>
+              <legend>Funcionalidades previstas</legend>
+              <div class="grupo-opcoes">
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="login">Login e controle de acesso</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="cadastros">Cadastros</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="painel">Painel de indicadores</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="agenda">Agenda</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="tarefas">Tarefas e acompanhamento</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="documentos">Documentos e arquivos</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="financeiro">Controle financeiro</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="relatorios">Relatórios</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="notificacoes">Notificações</label>
+                <label class="opcao"><input type="checkbox" name="funcionalidades_sistema[]" value="integracoes">Integrações externas</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="outras-funcionalidades-sistema">Descreva outras funcionalidades necessárias</label>
+            <textarea id="outras-funcionalidades-sistema" name="outras_funcionalidades_sistema"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="informacoes-dashboard">Quais informações devem aparecer no painel inicial?</label>
+            <textarea id="informacoes-dashboard" name="informacoes_dashboard"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="perfis-acesso">Existem diferentes tipos de usuário ou níveis de acesso?</label>
+            <textarea id="perfis-acesso" name="perfis_acesso"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="dados-cadastrados">Quais informações precisarão ser cadastradas no sistema?</label>
+            <textarea id="dados-cadastrados" name="dados_cadastrados"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="relatorios">Quais relatórios, consultas ou indicadores serão necessários?</label>
+            <textarea id="relatorios" name="relatorios"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="integracoes">O sistema precisará se integrar com alguma ferramenta?</label>
+            <textarea id="integracoes" name="integracoes"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2 class="titulo-secao">10. Informações complementares</h2>
+        <p class="descricao-secao">
+          Utilize este espaço para registrar detalhes que possam influenciar o desenvolvimento do projeto.
+        </p>
+
+        <div class="grade">
+          <div class="campo campo-largo">
+            <label for="prioridades">Quais elementos ou funcionalidades são considerados prioritários?</label>
+            <textarea id="prioridades" name="prioridades"></textarea>
+          </div>
+
+          <div class="campo campo-largo">
+            <label for="observacoes">Existe alguma informação importante que ainda não foi mencionada?</label>
+            <textarea id="observacoes" name="observacoes"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="acoes">
+        <label class="confirmacao">
+          <input type="checkbox" id="confirmacao" name="confirmacao" value="sim" required>
+          <span>
+            Confirmo que as informações fornecidas representam as necessidades e preferências atuais do projeto.
+            <span class="obrigatorio">*</span>
+          </span>
+        </label>
+
+        <button type="submit" id="botaoEnviar">Enviar briefing de imersão</button>
+
+        <div
+          id="mensagemFormulario"
+          class="mensagem"
+          role="alert"
+          aria-live="polite"
+        ></div>
+      </div>
+    </form>
+
+    <footer class="rodape">
+      © <span id="anoAtual"></span> Studio L4. Todos os direitos reservados.
+    </footer>
+  </main>
+
+  <script>
+    "use strict";
+
+    /*
+      SUBSTITUIR pelo endereço real da Edge Function após o deploy:
+      https://juyokuqvjpcieumvylsp.supabase.co/functions/v1/enviar-briefing-imersao
+    */
+    const URL_FUNCAO =
+      "https://juyokuqvjpcieumvylsp.supabase.co/functions/v1/enviar-briefing-imersao";
+
+    const formulario = document.getElementById("formBriefing");
+    const mensagem = document.getElementById("mensagemFormulario");
+    const botaoEnviar = document.getElementById("botaoEnviar");
+    const anoAtual = document.getElementById("anoAtual");
+    const inicioFormulario = document.getElementById("formulario-iniciado-em");
+    const tiposProjeto = document.querySelectorAll(".tipo-projeto");
+    const secaoSite = document.getElementById("secao-site");
+    const secaoSistema = document.getElementById("secao-sistema");
+
+    anoAtual.textContent = new Date().getFullYear();
+    inicioFormulario.value = new Date().toISOString();
+
+    function exibirMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = `mensagem ${tipo}`;
+    }
+
+    function obterSelecionados(nome) {
+      return Array.from(
+        document.querySelectorAll(`input[name="${nome}"]:checked`)
+      ).map((campo) => campo.value);
+    }
+
+    function possuiTipoProjetoSelecionado() {
+      return obterSelecionados("tipo_projeto[]").length > 0;
+    }
+
+    function possuiEstiloSelecionado() {
+      return obterSelecionados("estilo_visual[]").length > 0;
+    }
+
+    function atualizarSecoesDoProjeto() {
+      const tipos = obterSelecionados("tipo_projeto[]");
+      const mostrarSite =
+        tipos.includes("site") || tipos.includes("site-sistema");
+      const mostrarSistema =
+        tipos.includes("sistema") || tipos.includes("site-sistema");
+
+      secaoSite.hidden = !mostrarSite;
+      secaoSistema.hidden = !mostrarSistema;
+
+      secaoSite.querySelectorAll("input, select, textarea").forEach((campo) => {
+        campo.disabled = !mostrarSite;
+      });
+
+      secaoSistema.querySelectorAll("input, select, textarea").forEach((campo) => {
+        campo.disabled = !mostrarSistema;
+      });
+    }
+
+    function converterFormularioParaObjeto(formData) {
+      const dados = {};
+
+      for (const [chaveOriginal, valor] of formData.entries()) {
+        const chave = chaveOriginal.replace(/\[\]$/, "");
+
+        if (Object.prototype.hasOwnProperty.call(dados, chave)) {
+          if (!Array.isArray(dados[chave])) {
+            dados[chave] = [dados[chave]];
+          }
+          dados[chave].push(valor);
+        } else {
+          dados[chave] = valor;
+        }
+      }
+
+      return dados;
+    }
+
+    tiposProjeto.forEach((campo) => {
+      campo.addEventListener("change", atualizarSecoesDoProjeto);
+    });
+
+    formulario.addEventListener("submit", async (evento) => {
+      evento.preventDefault();
+
+      mensagem.className = "mensagem";
+      mensagem.textContent = "";
+
+      if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        exibirMensagem(
+          "Preencha corretamente todos os campos obrigatórios.",
+          "erro"
+        );
+        return;
+      }
+
+      if (!possuiTipoProjetoSelecionado()) {
+        exibirMensagem(
+          "Selecione o tipo de solução que está sendo desenvolvida.",
+          "erro"
+        );
+        document.querySelector('input[name="tipo_projeto[]"]').focus();
+        return;
+      }
+
+      if (!possuiEstiloSelecionado()) {
+        exibirMensagem(
+          "Selecione pelo menos um estilo visual para o projeto.",
+          "erro"
+        );
+        document.querySelector('input[name="estilo_visual[]"]').focus();
+        return;
+      }
+
+      botaoEnviar.disabled = true;
+      botaoEnviar.textContent = "Enviando briefing...";
+
+      try {
+        const formData = new FormData(formulario);
+        const dados = converterFormularioParaObjeto(formData);
+
+        const resposta = await fetch(URL_FUNCAO, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dados)
+        });
+
+        let resultado = {};
+
+        try {
+          resultado = await resposta.json();
+        } catch {
+          resultado = {};
+        }
+
+        if (!resposta.ok) {
+          throw new Error(
+            resultado.erro ||
+            resultado.message ||
+            "Não foi possível enviar o briefing."
+          );
+        }
+
+        formulario.reset();
+        inicioFormulario.value = new Date().toISOString();
+        atualizarSecoesDoProjeto();
+
+        exibirMensagem(
+          "Briefing enviado com sucesso. As informações foram encaminhadas à Studio L4.",
+          "sucesso"
+        );
+
+        mensagem.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      } catch (erro) {
+        console.error("Erro ao enviar briefing:", erro);
+
+        exibirMensagem(
+          "Não foi possível enviar o briefing. Verifique sua conexão e tente novamente.",
+          "erro"
+        );
+      } finally {
+        botaoEnviar.disabled = false;
+        botaoEnviar.textContent = "Enviar briefing de imersão";
+      }
+    });
+
+    atualizarSecoesDoProjeto();
+  </script>
+</body>
+</html>
