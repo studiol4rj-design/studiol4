@@ -2,7 +2,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const ALLOWED_ORIGIN =
   Deno.env.get("ALLOWED_ORIGIN") ?? "https://studiol4.com.br";
 
-const DESTINATARIO = "studiol4rj@gmail.com";
+const DESTINATARIO = "contato@studiol4.com.br";
 const REMETENTE = "Studio L4 <briefing@studiol4.com.br>";
 
 const FIELD_LABELS: Record<string, string> = {
@@ -88,7 +88,7 @@ function escapeHtml(value: unknown): string {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
+    .replaceAll('\"', "&quot;")
     .replaceAll("'", "&#039;");
 }
 
