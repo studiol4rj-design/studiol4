@@ -125,10 +125,6 @@ function assertPayloadSize(req: Request): void {
 }
 
 function validateSubmission(data: Record<string, unknown>): string | null {
-  if (String(data.website ?? "").trim() !== "") {
-    return "SPAM";
-  }
-
   const name = String(data.nome_negocio ?? "").trim();
 
   if (name.length < 2 || name.length > 160) {
@@ -268,6 +264,7 @@ Deno.serve(async (req: Request) => {
     const validationError = validateSubmission(data);
 
     if (validationError === "SPAM") {
+      console.warn("Briefing ignorado pela proteção temporal anti-spam.");
       return json({ sucesso: true }, 200, origin);
     }
 
@@ -302,6 +299,11 @@ Deno.serve(async (req: Request) => {
         origin,
       );
     }
+
+    console.log("Briefing enviado pelo Resend.", {
+      id: resendResult.id,
+      destinatario: DESTINATARIO,
+    });
 
     return json(
       {
