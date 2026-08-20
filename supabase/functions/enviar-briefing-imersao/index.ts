@@ -1,6 +1,8 @@
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const ALLOWED_ORIGIN =
-  Deno.env.get("ALLOWED_ORIGIN") ?? "https://studiol4.com.br";
+const ALLOWED_ORIGINS = new Set([
+  "https://studiol4.com.br",
+  "https://www.studiol4.com.br",
+]);
 
 const DESTINATARIO = "contato@studiol4.com.br";
 const REMETENTE = "Studio L4 <briefing@studiol4.com.br>";
@@ -57,9 +59,15 @@ const FIELD_LABELS: Record<string, string> = {
   observacoes: "Informações complementares",
 };
 
+function isAllowedOrigin(origin: string | null): boolean {
+  return !origin || ALLOWED_ORIGINS.has(origin);
+}
+
 function corsHeaders(origin: string | null): HeadersInit {
   const origemPermitida =
-    origin === ALLOWED_ORIGIN ? origin : ALLOWED_ORIGIN;
+    origin && ALLOWED_ORIGINS.has(origin)
+      ? origin
+      : "https://studiol4.com.br";
 
   return {
     "Access-Control-Allow-Origin": origemPermitida,
@@ -88,7 +96,7 @@ function escapeHtml(value: unknown): string {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll('\"', "&quot;")
+    .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
 
@@ -244,7 +252,7 @@ Deno.serve(async (req: Request) => {
     return json({ erro: "Método não permitido." }, 405, origin);
   }
 
-  if (origin && origin !== ALLOWED_ORIGIN) {
+  if (!isAllowedOrigin(origin)) {
     return json({ erro: "Origem não autorizada." }, 403, origin);
   }
 
